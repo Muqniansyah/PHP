@@ -1,0 +1,34 @@
+[
+    {
+        "nama" : "Muqniansyah Arifin",
+        "umur" : 18,
+        "nrp" : "0828383182",
+        "lulus" : true,
+        "hobi" : [
+            "coding",
+            "gaming",
+            "basket",
+            "musik"
+        ],
+        "pembingbing" : {
+            "pembingbing1" : "sandhika",
+            "pembingbing2" : "dea afrizal"
+        }
+    },
+    {
+        "nama" : "Muqniansyah Arifin",
+        "umur" : 18,
+        "nrp" : "0828383182",
+        "lulus" : true,
+        "hobi" : [
+            "coding",
+            "gaming",
+            "basket",
+            "musik"
+        ],
+        "pembingbing" : {
+            "pembingbing1" : "sandhika",
+            "pembingbing2" : "dea afrizal"
+        }
+    }
+]
