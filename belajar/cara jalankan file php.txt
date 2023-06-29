@@ -1,0 +1,12 @@
+cara menjalankan file php, yaitu dengan cara :
+
+1. download xampp sebagai web server 
+2. lalu jika sudah didownload, maka jalankan "start" pada apache dan mysql
+3. setelah itu, letakkan file dan folder yang ingin ditampilkan pada web didalam folder htdocs
+(folder htdocs terletak pada folder xampp yang sudah didownload).
+4. berikutnya, buka web browser (contohnya google) lalu ketikkan perintah :
+jika tidak ada folder = localhost/<nama-file>.php
+jika memakai folder = localhost/<nama-folder>/<nama-file>.php
+
+contohnya :
+localhost/belajar/coba.php
