@@ -1,4 +1,4 @@
-// membuat form sederhana
+// membuat form sederhana dengan method get
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@
 </head>
 <body>
     <h2>Masukkan Nama dan Email</h2>
-    <form action="form2.php" method="post">
+    <form action="form4.php" method="get">
         <h3>Nama:</h3> 
         <input type="text" name="nama">
             <br>
@@ -22,7 +22,7 @@
 </html>
 
 <!-- keterangan -->
-<!-- action="form2.php" untuk menuju ke file form2.php -->
-<!-- method="post" untuk bisa mengakses method post/ memasukkan data dengan method post. -->
-<!-- POST adalah metode pengiriman data yang datanya tidak disimpan pada url -->
-<!-- name="nama" dan name="email" untuk bisa diakses dengan variabel $_POST["nama"] dan $_POST["email"] -->
+<!-- action="form4.php" untuk menuju ke file form4.php -->
+<!-- method="get" untuk bisa mengakses method get/ memasukkan data dengan method get. -->
+<!-- GET adalah metode pengiriman data yang datanya disimpan pada url -->
+<!-- name="nama" dan name="email" untuk bisa diakses dengan variabel $_GET["nama"] dan $_GET["email"] -->

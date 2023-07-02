@@ -1,0 +1,26 @@
+ada beberapa variabel yang sudah predefined di PHP yang disebut superglobal. artinya variabel ini slalu bisa diakses
+dari manapun, baik fungsi, class atau file tanpa harus melakukan sesuatu yang khusus.
+
+beberapa variabel superglobal :
+1. $GLOBALS
+    digunakan untuk mengakses variabel global dari manapun script PHP, atau dari fungsi atau method.
+2. $_SERVER
+    digunakan untuk menampilkan info ttg header,path dan lokasi script.
+3. $_REQUEST
+    digunakan untuk mengumpulkan data setelah disubmit oleh form HTML.
+4. $_POST
+    POST adalah metode pengiriman data yang datanya tidak disimpan pada url.
+5. $_GET
+    GET adalah metode pengiriman data yang datanya disimpan pada url.
+6. $_FILES
+7. $_ENV
+8. $_COOKIE
+    digunakan untuk mengidentifikasi user tertentu. cookie adalah file yang dibuat oleh situs
+    yang anda buka/ file kecil yang ditampilkan oleh server pada komputer user. tiap kali komputer 
+    meminta halaman di browser, maka cookieakan dikirimkan pula. serta cookie memudahkan
+    anda saat online dengan menyimpan informasi browsing. dengan cookie, situs dapat buat anda tetap login.
+    anda bisa buat dan ambil cookie dengan PHP.
+9. $_SESSION
+    digunakan untuk menyimpan informasi. anda bisa proses dan tampilkan session lagi.
+    informasi session ini temporer dan otomatis dihapus jika user meninggalkan website.
+    jika ingin penyimpanan permanen, maka gunakan database.

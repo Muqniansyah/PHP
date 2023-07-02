@@ -1,0 +1,2 @@
+tempat penyimpanan database berada di :
+xampp -> mysql -> data -> dbbuku (folder database yang kita buat).
