@@ -1,0 +1,5 @@
+tahap yang harus dipersiapkan untuk menyambungkan php dengan database
+
+1. buat database & table mysql (di phpmyadmin) 
+2. buat file koneksi(untuk menghubungkan data php kita dengan databse)
+3. buat script proses dengan php

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch data format txt</title>
+  </head>
+  <body>
+    <!-- buat button dengan id getText -->
+    <button id="getText">Ambil data</button>
+
+    <!-- buat p dengan id output -->
+    <p id="output"></p>
+
+    <script>
+      // ambil id getText dan tambahkan addEventListener yang artinya jika button tersebut di klik maka akan melakukan sesuatu atau event
+      document.getElementById("getText").addEventListener("click", getText);
+
+      // kita buat function getText, jadi ketika diklik dia akan melakukan apa ? nah kita buat fungsi-nya (function)
+      function getText() {
+        // kita gunakan fetch dalam kita ambil data sample.txt yang sudah kita buat
+        fetch("sampel.txt")
+          // kita buat response menjadi text
+          .then((response) => response.text())
+          // lalu data nya kita ambil dan kita masuken ke p id output
+          .then((data) => {
+            document.getElementById("output").innerHTML = data;
+          })
+          // membuat catch jadi kalau ada yang error langsung ketawan
+          .catch((err) => console.log(err));
+      }
+    </script>
+  </body>
+</html>
