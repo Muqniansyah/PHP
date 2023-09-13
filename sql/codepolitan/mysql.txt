@@ -1,0 +1,144 @@
+-database adalah suatu kumpulan data yang terorganisir disimpan dan diakses didalam komputer.
+
+-dbms yaitu data management sistem. merupakan salah satu software untuk mengolah data yang ada dikomputer.
+
+-contoh dbms :
+     mysql,mariadb,sql server,mongodb, postgre.
+
+-komponen utama: 
+    tabel, field/kolom, baris/record, tipe data, query.
+
+-query merupakan bahasa standar dalam database atau biasa dibilang strutur query language. contohnya sql.
+sql ini adalah bahasa yang digunakan untuk mengolah data yang ada didalam database.
+didalam sql sendiri ada berbagai perintah yaitu :
+DML, DDL, DCL, TCL.
+
+1.)DML(data manipulation language)berhubungan dengan manipulasi/pengolahan data dalam table.
+contoh DML :
+	select, insert, update, delete
+2.)DDL(data defiinition language)berhubungan dengan pendefinisian struktur database. 
+contoh DDL :
+	create, alter, drop, truncate
+3.)DCL(data control language)untuk  ubah hak akses,memberikan role,dan isu lainnya yang berhubungan dengan keamanan database. 
+contoh DCL :
+	grant,revoke
+4.) contoh TCL :
+	commit, rollback, begin, tran, rollback.	
+
+
+-perintah untuk masuk keDBMS yaitu :
+	mysql -uroot;
+-perintah jika ingin setting password dalam masuk ke DBMS mysqlnya yaitu :
+	mysql -u root -p
+-cara buat database :
+	CREATE DATABASE <nama-database>;
+contoh : CREATE DATABASE mysql_db;
+keterangan :
+setiap perintah DML,DDL,DCL, harus memakai uppercase.
+
+-perintah menampilkan seluruh database yang ada diserver kita, yaitu :
+	SHOW DATABASES;
+-perintah menghapus database, yaitu :
+	DROP DATABASE <nama-database>;
+contoh : DROP DATABASE mysql_db;
+
+-perintah mengaktifkan database, yaitu :
+	USE <nama-database>;
+
+-perintah membuat tabel, yaitu :
+	CREATE TABLE <nama-table> (definisikan kolom <spasi> tipe data)
+contoh : CREATE TABLE anggota (id int, nama varchar(254)); 
+keterangan : jika data tablenya banyak pisahkan dengan koma
+
+-perintah menampilkan table, yaitu :
+	SHOW TABLES;
+-perintah menghapus table, yaitu :
+	DROP TABLE <nama-table>;
+contoh : DROP TABLE anggota;
+
+-ctrl+c 
+untuk keluar dari xampp cli
+
+-perintah merubah nama table, yaitu :
+	ALTER TABLE <nama-table-yang-akan-diubah> 
+    RENAME TO <nama-table-baru>;
+
+contoh : ALTER TABLE anggota
+    RENAME TO siswa;
+
+-perintah mengecek kolom pada table, yaitu :
+	DESCRIBE <nama-table>;
+contoh: DESCRIBE siswa;
+
+-perintah tambah kolom pada table, yaitu :
+	ALTER TABLE <nama-table-yang-akan-diubah> 
+    ADD COLUMN <nama-kolom> <tipe-data>;
+contoh : ALTER TABLE siswa
+    ADD COLUMN kelas char(2);
+
+-perintah hapus kolom pada table, yaitu :
+	ALTER TABLE <nama-table-yang-akan-diubah> 
+    DROP COLUMN <nama-kolom>;
+contoh : ALTER TABLE siswa
+      DROP COLUMN kelas;
+
+-fungsi primary key adalah sebagai identitas unik dari suatu baris data pada suatu table.
+
+-perintah membuat primary key untuk table baru, yaitu :
+	CREATE TABLE <nama-table> (
+     id INT NOT NULL AUTO_INCREMENT,
+     nama VARCHAR(50) NOT NULL,
+     PRIMARY KEY(id)
+     );
+
+keterangan :
+1.)not null artinya tidak boleh kosong
+2.)AUTO_INCREMENT artinya diisi secara otomatis atau secara otomatis mysql akan beri nilai secara berurutan di kolom id.
+3.)PRIMARY KEY nilainya id 
+
+-perintah menambahkan primary key pada table, yaitu :
+	ALTER TABLE <nama-table-yang-akan-diubah> 
+    ADD PRIMARY KEY(<KOLOM>);
+
+contoh : ALTER TABLE siswa 
+    ADD PRIMARY KEY(id);
+
+-perintah menghapus primary key, yaitu :
+	ALTER TABLE <nama-table-yang-akan-diubah> 
+    DROP PRIMARY KEY;
+
+contoh : ALTER TABLE siswa
+    DROP PRIMARY KEY;
+
+-unique key yaitu berfungsi menentukan suatu kolom bernilai unik. nisa manambahkan lebih dari satu pada satu table.
+
+-perintah membuat unique key untuk table baru, yaitu :
+	CREATE TABLE <nama-table> (
+     id INT NOT NULL AUTO_INCREMENT,
+     nama VARCHAR(50) NOT NULL,
+     PRIMARY KEY(id),
+     UNIQUE KEY(nama)
+     );
+
+keterangan :
+nama adalah kolom pada table yang ingin diberi UNIQUE KEY.
+
+-perintah menambahkan UNIQUE key pada table, yaitu :
+	ALTER TABLE <nama-table-yang-akan-diubah> 
+    ADD UNIQUE KEY(<KOLOM>);
+
+contoh : ALTER TABLE siswa 
+    ADD UNIQUE KEY(id, nama, no_induk);
+
+-perintah menghapus unique key, yaitu :
+	ALTER TABLE <nama-table-yang-akan-diubah> 
+    DROP INDEX <nama-kolom-unique key>;
+
+-foreign key adalah kolom referensi yang dimiliki suatu table dan dibutuhkan untuk melakukan relasi dari antar table.
+
+-perintah menampilkan cara pembuatan dari suatu table, yaitu :
+SHOW CREATE TABLE <nama-table>;
+
+
+
+

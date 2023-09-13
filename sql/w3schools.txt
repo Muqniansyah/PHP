@@ -1,0 +1,1027 @@
+Apa itu SQL?
+SQL adalah singkatan dari Structured Query Language
+SQL memungkinkan Anda mengakses dan memanipulasi database
+SQL menjadi standar American National Standards Institute (ANSI) pada tahun 1986, dan International Organization for Standardization (ISO) pada tahun 1987
+
+Apa yang bisa dilakukan SQL?
+SQL dapat mengeksekusi query terhadap database
+SQL dapat mengambil data dari database
+SQL dapat menyisipkan catatan dalam database
+SQL dapat memperbarui catatan dalam database
+SQL dapat menghapus catatan dari database
+SQL dapat membuat database baru
+SQL dapat membuat tabel baru dalam database
+SQL dapat membuat prosedur tersimpan dalam database
+SQL dapat membuat tampilan dalam database
+SQL dapat mengatur izin pada tabel, prosedur, dan tampilan
+
+
+noted :
+Kata kunci SQL TIDAK peka huruf besar-kecil: selectsama dengan SELECT.
+Beberapa sistem database memerlukan titik koma di akhir setiap pernyataan SQL.
+Titik koma adalah cara standar untuk memisahkan setiap pernyataan SQL dalam sistem database yang memungkinkan lebih dari satu pernyataan SQL dieksekusi dalam panggilan yang sama ke server.
+
+
+1. ) SELECT
+SELECTdigunakan untuk memilih data dari database.
+Data yang dikembalikan disimpan dalam tabel hasil, yang disebut kumpulan hasil.
+
+- untuk pilih kolom dalam database :
+SELECT column1, column2, ...
+FROM table_name;
+
+contoh memilih kolom nama dari tabel Customers :
+SELECT nama FROM Customers;
+
+Di sini, kolom1, kolom2, ... adalah nama bidang tabel yang datanya ingin Anda pilih. 
+Jika Anda ingin memilih semua bidang yang tersedia dalam tabel, gunakan sintaks berikut:
+SELECT * FROM table_name;
+
+contoh memilih semua kolom dari tabel Customers:
+SELECT * FROM Customers;
+
+2.) SQL WHERE
+WHERE digunakan untuk memfilter catatan.
+Ini digunakan untuk mengekstrak hanya catatan-catatan yang memenuhi kondisi tertentu.
+Klausa ini WHEREtidak hanya digunakan dalam SELECTpernyataan, tetapi juga digunakan dalam UPDATE, DELETE, dan seterusnya!
+
+sintaks :
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+contoh memilih semua kolom dari tabel data_mahasiswa dimana kondisi kolom namanya adalah bila :
+SELECT * FROM data_mahasiswa WHERE nama = 'bila';
+
+contoh memilih semua kolom dari tabel Customers dimana kondisi CustomerID adalah 1 (jika angka maka tidak pakai kutip):
+SELECT * FROM Customers
+WHERE CustomerID=1;
+
+operator dalam WHERE : 
+= , < , >, >=,  <=, <> (artinya tidak sama) , BETWEEN, LIKE, IN.
+
+3.)SQL ORDER BY
+Kata ORDER BY kunci digunakan untuk mengurutkan kumpulan hasil dalam urutan menaik atau menurun.
+Kata ORDER BY kunci mengurutkan rekaman dalam urutan menaik secara default. Untuk mengurutkan record dalam urutan menurun, gunakan DESC kata kunci.
+untuk menaik bisa diberikan ASC atau tidak diberikan akan default menaik.
+
+sintaks :
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC|DESC;
+
+contoh memilih semua kolom dari tabel Customers diurutkan menaik pada kolom Country  :
+SELECT * FROM Customers ORDER BY Country;
+
+contoh memilih semua kolom dari tabel Customers diurutkan menurun/ descending pada kolom Country :
+SELECT * FROM Customers ORDER BY Country DESC;
+
+4.) SQL AND
+WHERE dapat berisi satu atau banyak AND operator.
+Operator AND digunakan untuk memfilter rekaman berdasarkan lebih dari satu kondisi.
+Operator AND menampilkan catatan jika semua kondisinya BENAR.
+Operator OR menampilkan catatan jika salah satu kondisinya BENAR.
+
+sintaks :
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition1 AND condition2 AND condition3 ...;
+
+contoh memilih semua kolom dari tabel Customers dimana kondisi Country adalah Germany dan City adalah Berlin :
+SELECT * FROM Customers WHERE Country = 'Germany' AND City = 'Berlin';
+
+5.) SQL OR
+WHERE dapat berisi satu atau lebih OR operator.
+Operator OR digunakan untuk memfilter catatan berdasarkan lebih dari satu kondisi.
+
+sintaks :
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition1 OR condition2 OR condition3 ...;
+
+contoh memilih semua kolom dari tabel Customers dimana kondisi Country adalah Germany atau Country adalah Spain :
+SELECT * FROM Customers WHERE Country = 'Germany' OR Country = 'Spain';
+
+6.) SQL NOT operator
+NOT digunakan bersama dengan operator lain untuk memberikan hasil sebaliknya, disebut juga hasil negatif.
+
+sintaks :
+SELECT column1, column2, ...
+FROM table_name
+WHERE NOT condition;
+
+contoh memilih semua kolom dari tabel Customers dimana kondisi bukan Country adalah Spain :
+SELECT * FROM Customers WHERE NOT Country = 'Spain';
+
+Pada contoh di atas, NOToperator digunakan bersama dengan =operator, namun dapat digunakan bersama dengan operator pembanding dan/atau logika lainnya.
+
+7.) SQL INSERT INTO
+INSERT INTO digunakan untuk menyisipkan record baru ke dalam tabel.
+
+sintaks :
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+Jika Anda menambahkan nilai untuk semua kolom tabel, Anda tidak perlu menentukan nama kolom dalam kueri SQL. 
+Namun, pastikan urutan nilainya sama dengan urutan kolom pada tabel. Di sini, INSERT INTO sintaksnya:
+INSERT INTO table_name
+VALUES (value1, value2, value3, ...);
+
+contoh memasukkan pada tabel Customers yaitu kolom nama, umur yang nilainya yaitu muni, 20:
+INSERT INTO Customers (nama, umur)
+VALUES ('muni', 20);
+
+8.) SQL UPDATE
+UPDATE digunakan untuk mengubah catatan yang ada dalam sebuah tabel. Berhati-hatilah saat memperbarui catatan dalam tabel! Perhatikan WHEREklausa dalam UPDATEpernyataan tersebut. Klausa tersebut WHEREmenentukan catatan mana yang harus diperbarui. 
+Jika Anda menghilangkan WHERE klausa tersebut, semua catatan dalam tabel akan diperbarui!
+
+sintaks :
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+contoh update tabel data_mahasiswa lalu set kolom alamat dengan 123 jalan xyz dimana kondisi kolom nama adalah bila:
+UPDATE data_mahasiswa SET alamat = '123 Jalan XYZ' WHERE nama = 'bila'
+
+contoh update tabel Customers lalu set kolom ContactName dengan juan :
+UPDATE Customers SET ContactName='Juan';
+
+9.) SQL DELETE
+DELETE digunakan untuk menghapus record yang ada dalam sebuah tabel. Berhati-hatilah saat menghapus record dalam tabel! Perhatikan WHEREklausa dalam DELETEpernyataan tersebut. Klausa tersebut WHEREmenentukan catatan mana yang harus dihapus. 
+Jika Anda menghilangkan WHERE klausa tersebut, semua catatan dalam tabel akan dihapus!
+
+sintaks :
+DELETE FROM table_name WHERE condition;
+
+contoh hapus tabel data_guru dimana kondisi kolom nama yaitu bu rika :
+DELETE FROM data_guru WHERE nama = 'bu rika'
+
+hapus semua baris dalam tabel tanpa menghapus tabel. Artinya struktur tabel, atribut, dan indeks akan tetap utuh. sintaksnya :
+DELETE FROM table_name;
+
+contoh hapus semua baris dalam tabel "Customers", tanpa menghapus tabel :
+DELETE FROM Customers;
+
+10.)  SQL MIN() dan MAX()
+MIN() mengembalikan nilai terkecil dari kolom yang dipilih. MAX() mengembalikan nilai terbesar dari kolom yang dipilih.
+
+sintaks MIN() :
+SELECT MIN(column_name)
+FROM table_name
+WHERE condition;
+
+contoh pilih kolom price lalu kembalikan nilai terkecil dari tabel Products :
+SELECT MIN(Price) FROM Products;
+
+sintaks MAX() :
+SELECT MAX(column_name)
+FROM table_name
+WHERE condition;
+
+contoh pilih kolom price lalu kembalikan nilai terbesar dari tabel Products:
+SELECT MAX(Price) FROM Products;
+
+11.) SQL LIKE Operator
+Operator LIKEdigunakan dalam WHEREklausa untuk mencari pola tertentu dalam suatu kolom.
+Ada dua wildcard yang sering digunakan bersama dengan LIKE operator:
+yaitu Tanda persen (%) mewakili nol, satu, atau beberapa karakter, atau menampilkan secara bebas, atau menampilkan secara acak. 
+dan yang kedua adalah Tanda garis bawah (_) mewakili satu karakter tunggal.
+
+sintaks :
+SELECT column1, column2, ...
+FROM table_name
+WHERE columnN LIKE pattern;
+
+contoh Pilih semua Customers yang dimana pada kolom CustomerName dimulai dengan huruf "a" :
+SELECT * FROM Customers WHERE CustomerName LIKE 'a%';
+
+contoh pilih semua Customers dari kota yang terdapat huruf tengahnya 'L' :
+SELECT * FROM Customers WHERE city LIKE '%L%';
+
+contoh pilih semua kolom pada tabel Customers dimana pada kolom CustomerName dimulai dengan 'La' dan huruf akhir tampilkan secara bebas :
+SELECT * FROM Customers WHERE CustomerName LIKE 'La%';
+
+contoh Jika tidak ada wildcard yang ditentukan, frasa tersebut harus memiliki pencocokan tepat untuk mengembalikan hasil :
+SELECT * FROM Customers WHERE Country LIKE 'Spain';
+
+artinya pilih semua kolom pada tabel Customers dimana kolom Country yaitu dari Spanyol.
+
+12.) SQL Wildcard Characters
+Karakter wildcard digunakan untuk menggantikan satu atau lebih karakter dalam sebuah string.
+wildcard biasanya digunakan dalam LIKE operator. 
+macam" Wildcard Characters :
+% = Mewakili nol atau lebih karakter
+_ = Mewakili satu karakter
+[] = Mewakili karakter apa pun di dalam tanda kurung *
+^ = Mewakili karakter apa pun yang tidak ada dalam tanda kurung *
+- = Mewakili karakter apa pun dalam rentang yang ditentukan *
+{} = Mewakili karakter yang lolos **
+
+* =  Tidak didukung di database PostgreSQL dan MySQL.
+** = Hanya didukung di database Oracle.
+
+
+contoh pilih semua kolom pada tabel Customers dimana kolom CustomerName yang diawali dengan huruf bebas dan diakhiri dengan pola 'es' :
+SELECT * FROM Customers WHERE CustomerName LIKE '%es';
+
+13.) SQL IN Operator
+Operator IN memungkinkan Anda menentukan beberapa nilai dalam sebuah WHERE klausa.
+Operator IN adalah singkatan untuk berbagai OR kondisi.
+
+sintaks :
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1, value2, ...);
+
+contoh pilih semua kolom pada tabel Customers dimana Country dari 'Germany', 'France', or 'UK':
+SELECT * FROM Customers WHERE Country IN ('Germany', 'France', 'UK');
+
+contoh Dengan menggunakan NOT kata kunci di depan IN operator, Anda mengembalikan semua catatan yang BUKAN salah satu nilai dalam daftar :
+SELECT * FROM Customers WHERE Country NOT IN ('Germany', 'France', 'UK');
+
+artinya pilih semua kolom pada tabel Customers dimana Country bukan dari 'Germany', 'France', or 'UK'
+
+14.) SQL BETWEEN Operator
+Operator BETWEENmemilih nilai dalam rentang tertentu. Nilainya bisa berupa angka, teks, atau tanggal.
+Operatornya BETWEENinklusif: nilai awal dan akhir disertakan. 
+
+sintaks :
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+
+contoh memilih semua kolom pada tabel Products dimana kolom Price antara 10 dan 20 :
+SELECT * FROM Products WHERE Price BETWEEN 10 AND 20;
+
+contoh memilih semua kolom pada tabel Products dimana kolom Price bukan antara 10 dan 20 :
+SELECT * FROM Products WHERE Price NOT BETWEEN 10 AND 20;
+
+contoh memilih semua kolom pada tabel Products dimana kolom Price antara 10 dan 20 dan jangan tampilkan kolom CategoryID yang punya nilai 1,2, dan 3 :
+SELECT * FROM Products WHERE Price BETWEEN 10 AND 20 AND CategoryID NOT IN (1,2,3);
+
+
+15.) SQL ALIASES
+Alias ​​​​SQL digunakan untuk memberi nama sementara pada tabel, atau kolom dalam tabel.
+Alias ​​​​sering digunakan untuk membuat nama kolom lebih mudah dibaca.
+Alias ​​hanya ada selama durasi kueri tersebut.
+Alias ​​dibuat dengan ASkata kunci.
+Diperlukan tanda kutip ganda atau tanda kurung siku jika nama alias mengandung spasi.
+
+Alias ​​​​dapat berguna ketika:
+a. Ada lebih dari satu tabel yang terlibat dalam kueri. 
+b. Fungsi digunakan dalam kueri.
+c. Nama kolom besar atau tidak terlalu mudah dibaca.
+d. Dua atau lebih kolom digabungkan menjadi satu.
+
+Sintaks Kolom Alias :
+SELECT column_name AS alias_name
+FROM table_name;
+
+Sintaks Tabel Alias :
+SELECT column_name(s)
+FROM table_name AS alias_name;
+
+
+contoh membuat dua alias, satu untuk kolom CustomerID dan satu lagi untuk kolom CustomerName :
+SELECT CustomerID AS ID, CustomerName AS Customer FROM Customers;
+
+artinya pilih CustomerID sebagai ID dan CustomerName sebagai Customer pada tabel Customers.
+
+contoh pilih CustomerName sebagai Customer dan ContactName sebagai Contact Person pada tabel Customers :
+SELECT CustomerName AS Customer, ContactName AS [Contact Person] FROM Customers;
+
+contoh membuat alias bernama "Alamat" yang menggabungkan empat kolom (Alamat, Kode Pos, Kota dan Negara) :
+SELECT CustomerName, Alamat + ', ' + KodePos + ' ' + Kota + ', ' + Negara AS Alamat FROM Customers;
+
+atau supaya berjalan dimysql bukan hanya di sql yaitu bisa pakai contoh seperti ini :
+SELECT CustomerName, CONCAT(Alamat,', ',KodePos,', ',Kota,', ',Negara) AS Alamat FROM Customers;
+
+artinya pilih kolom CustomerName dan kolom alamat, kodepos, kota, negara berikan alias sebagai Alamat pada tabel Customers.
+
+
+16.) SQL JOIN
+Klausa JOIN digunakan untuk menggabungkan baris dari dua tabel atau lebih, berdasarkan kolom terkait di antara tabel tersebut.
+
+berbagai jenis JOIN di SQL:
+(INNER) JOIN: Mengembalikan rekaman yang memiliki nilai yang cocok di kedua tabel.
+LEFT (OUTER) JOIN: Mengembalikan semua rekaman dari tabel kiri, dan rekaman yang cocok dari tabel kanan.
+RIGHT (OUTER) JOIN: Mengembalikan semua rekaman dari tabel kanan, dan rekaman yang cocok dari tabel kiri.
+FULL (OUTER) JOIN: Mengembalikan semua catatan ketika ada kecocokan di tabel kiri atau kanan.
+
+a. SQL INNER JOIN
+INNER JOIN memilih rekaman yang memiliki nilai yang cocok di kedua tabel.
+
+sintaks :
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name;
+
+contoh :
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+
+artinya pilih kolom OrderID yang berada pada Orders dan kolom CustomerName yang berada pada Customers dari tabel Orders 
+lakukan JOIN atau gabungkan dengan tabel Customers jika CustomerID pada tabel Orders sama dengan CustomerID pada tabel Customers.
+INNER JOIN memilih semua baris dari kedua tabel selama ada kecocokan antar kolom. 
+Jika ada catatan di tabel "Orders" yang tidak cocok dengan "Customers", pesanan ini tidak akan ditampilkan!
+
+b. SQL LEFT JOIN 
+LEFT JOIN mengembalikan semua catatan dari tabel kiri (tabel1), dan catatan yang cocok dari tabel kanan (tabel2). Hasilnya adalah 0 catatan dari sisi kanan, jika tidak ada yang cocok.
+Di beberapa database LEFT JOIN disebut LEFT OUTER JOIN.
+LEFT JOIN mengutamakan tabel yang ada disebelah kiri operasi JOIN.
+dalam hasil LEFT JOIN, semua baris dari tabel sebelah kiri(tabel pertama yang disebutkan) akan disertakan, bahkan jika tidak ada baris yang cocok ditabel disebelah kanan.
+jika tidak ada baris yang cocok ditabel kanan, kolom yang berasal dari tabel kanan akan bernilai NULL.
+
+sintaks :
+SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;
+
+contoh :
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CustomerName;
+
+
+artinya pilih kolom CustomerName yang berada pada Customers dan kolom OrderID yang berada pada Orders dari tabel Customers 
+lakukan JOIN atau gabungkan dari sebelah kiri dengan tabel Orders jika CustomerID pada tabel Customers sama dengan CustomerID pada tabel Orders
+dan urutkan CustomerName yang berada pada Customers secara menaik.
+LEFT JOIN mengembalikan semua catatan dari tabel kiri (Customers), meskipun tidak ada kecocokan di tabel kanan (Orders).
+
+c. SQL RIGHT JOIN
+RIGHT JOIN mengembalikan semua catatan dari tabel kanan (tabel2), 
+dan catatan yang cocok dari tabel kiri (tabel1). Hasilnya adalah 0 catatan dari sisi kiri, jika tidak ada yang cocok.
+Di beberapa database RIGHT JOIN disebut RIGHT OUTER JOIN.
+RIGHT JOIN mengutamakan tabel yang ada disebelah kanan operasi JOIN.
+dalam hasil RIGHT JOIN, semua baris dari tabel sebelah kanan(tabel kedua yang disebutkan) akan disertakan, bahkan jika tidak ada baris yang cocok ditabel disebelah kiri.
+jika tidak ada baris yang cocok ditabel kiri, kolom yang berasal dari tabel kiri akan bernilai NULL.
+
+sintaks :
+SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name = table2.column_name;
+
+contoh :
+SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
+FROM Orders
+RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+ORDER BY Orders.OrderID;
+
+artinya pilih kolom OrderID yang berada pada Orders, kolom LastName yang berada pada Employees dan kolom FirstName yang berada pada Employees dari tabel Orders 
+lakukan JOIN atau gabungkan dari sebelah kanan dengan tabel Employees jika EmployeeID pada tabel Orders sama dengan EmployeeID pada tabel Employees
+dan urutkan OrderID yang berada pada Orders secara menaik.
+RIGHT JOIN mengembalikan semua catatan dari tabel kanan (Employees), meskipun tidak ada kecocokan di tabel kiri (Orders).
+
+d. SQL FULL OUTER JOIN
+FULL OUTER JOIN mengembalikan semua catatan ketika ada kecocokan di catatan tabel kiri (tabel1) atau kanan (tabel2).
+FULL OUTER JOIN dan FULL JOIN sama.
+FULL OUTER JOIN berpotensi mengembalikan kumpulan hasil yang sangat besar!
+
+sintaks :
+SELECT column_name(s)
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column_name = table2.column_name
+WHERE condition;
+
+contoh :
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+FULL OUTER JOIN Orders ON Customers.CustomerID=Orders.CustomerID
+ORDER BY Customers.CustomerName;
+
+FULL OUTER JOINkunci mengembalikan semua catatan yang cocok dari kedua tabel, baik tabel lainnya cocok atau tidak. 
+Jadi, jika ada baris di "Customers" yang tidak cocok dengan "Orders", atau jika ada baris di "Orders" yang tidak cocok dengan "Customers", baris tersebut juga akan dicantumkan.
+
+e. SQL Self Join
+Self Join adalah gabungan biasa, namun tabelnya digabungkan dengan dirinya sendiri.
+
+sintaks :
+SELECT column_name(s)
+FROM table1 T1, table1 T2
+WHERE condition;
+
+T1 dan T2 adalah alias tabel berbeda untuk tabel yang sama.
+
+contoh SQL berikut cocok dengan customers yang berasal dari city yang sama :
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
+
+17.) SQL UNION Operator
+Operator UNION digunakan untuk menggabungkan kumpulan hasil dari dua SELECT pernyataan atau lebih.
+Setiap SELECT pernyataan di dalamnya UNION harus memiliki jumlah kolom yang sama.
+Kolom juga harus memiliki tipe data yang serupa.
+Kolom-kolom pada setiap SELECT pernyataan juga harus berada dalam urutan yang sama.
+Operator UNION hanya memilih nilai yang berbeda secara default. Untuk mengizinkan nilai duplikat, gunakan UNION ALL.
+
+sintaks :
+SELECT column_name(s) FROM table1
+UNION
+SELECT column_name(s) FROM table2;
+
+sintaks UNION ALL :
+SELECT column_name(s) FROM table1
+UNION ALL
+SELECT column_name(s) FROM table2;
+
+noted:
+Nama kolom pada kumpulan hasil biasanya sama dengan nama kolom pada SELECT pernyataan pertama.
+
+- contoh mengembalikan kota (hanya nilai yang berbeda) dari tabel "Customers" dan "Suppliers" :
+SELECT City FROM Customers
+UNION
+SELECT City FROM Suppliers
+ORDER BY City;
+
+Jika beberapa Customers atau Suppliers memiliki kota yang sama, setiap kota hanya akan dicantumkan satu kali, karena UNION hanya memilih nilai yang berbeda. 
+Gunakan UNION ALL juga untuk memilih nilai duplikat!
+
+contoh mengembalikan kota (nilai duplikat juga) dari tabel "Customers" dan "Suppliers":
+SELECT City FROM Customers
+UNION ALL
+SELECT City FROM Suppliers
+ORDER BY City;
+
+
+18.) SQL SELECT INTO
+SELECT INTO menyalin data dari satu tabel ke tabel baru.
+Tabel baru akan dibuat dengan nama kolom dan tipe seperti yang ditentukan dalam tabel lama. Anda dapat membuat nama kolom baru menggunakan AS klausa.
+
+sintaks Salin semua kolom ke tabel baru :
+SELECT *
+INTO newtable [IN externaldb]
+FROM oldtable
+WHERE condition;
+
+sintaks Salin hanya beberapa kolom ke dalam tabel baru :
+SELECT column1, column2, column3, ...
+INTO newtable [IN externaldb]
+FROM oldtable
+WHERE condition;
+
+contoh membuat salinan cadangan Customers:
+SELECT * INTO CustomersBackup2017 FROM Customers;
+
+artinya pilih semua kolom ke tabel baru(yaitu tabel CustomersBackup2017) dari tabel lama(yaitu tabel Customers).
+
+contoh menyalin beberapa kolom ke dalam tabel baru :
+SELECT CustomerName, ContactName INTO CustomersBackup2017 FROM Customers;
+
+artinya pilih kolom CustomerName dan kolom ContactName ke tabel baru(yaitu tabel CustomersBackup2017) dari tabel lama(yaitu tabel Customers).
+
+SELECT INTO bisa juga digunakan untuk membuat tabel baru yang kosong menggunakan skema lain. Cukup tambahkan WHERE klausa yang menyebabkan kueri tidak mengembalikan data.
+contoh sintaks :
+SELECT * INTO newtable
+FROM oldtable
+WHERE 1 = 0;
+
+19.) SQL INSERT INTO SELECT
+INSERT INTO SELECT menyalin data dari satu tabel dan menyisipkannya ke tabel lain.
+INSERT INTO SELECT mengharuskan tipe data dalam tabel sumber dan target cocok.
+
+sintaks Salin semua kolom dari satu tabel ke tabel lain :
+INSERT INTO table2
+SELECT * FROM table1
+WHERE condition;
+
+sintaks Salin hanya beberapa kolom dari satu tabel ke tabel lain :
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1
+WHERE condition;
+
+contoh menyalin "Suppliers" ke "Customers" (kolom yang tidak diisi data, akan berisi NULL) :
+INSERT INTO Customers (CustomerName, City, Country) SELECT SupplierName, City, Country FROM Suppliers;
+
+artinya salin data ke tabel Customers yang punya kolom (CustomerName, City, Country) lalu pilih dari kolom SupplierName, City, Country pada tabel Suppliers.
+
+contoh menyalin "Suppliers" ke "Customers" (isi semua kolom): 
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+SELECT SupplierName, ContactName, Address, City, PostalCode, Country FROM Suppliers;
+
+artinya salin data ke tabel Customers yang punya kolom (CustomerName, ContactName, Address, City, PostalCode, Country) lalu pilih dari kolom SupplierName, ContactName, Address, City, PostalCode, Country pada tabel Suppliers.
+ 
+
+20.) SQL GROUP BY Statement
+GROUP BY mengelompokkan baris yang memiliki nilai yang sama ke dalam baris ringkasan, seperti "temukan jumlah pelanggan di setiap negara".
+Pernyataan ini GROUP BY sering digunakan dengan fungsi agregat ( COUNT(), MAX(), MIN(), SUM(), AVG()) untuk mengelompokkan kumpulan hasil berdasarkan satu atau lebih kolom.
+
+sintaks :
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+ORDER BY column_name(s);
+
+contoh pilih kolom CustomerID dan cari jumlah total dan pilih kolom Country juga dari tabel Customers lakukan GROUP berdasarkan Country :
+SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country;
+
+21.) SQL HAVING Clause
+HAVING ditambahkan ke SQL karena WHERE kata kunci tidak dapat digunakan dengan fungsi agregat. jadi having digunakan saat memakai fungsi agregat.
+
+sintaks :
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+HAVING condition
+ORDER BY column_name(s);
+
+contoh mencantumkan jumlah pelanggan di setiap negara. Hanya sertakan negara dengan lebih dari 5 pelanggan :
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5;
+
+artinya pilih kolom CustomerID dan cari jumlah total dan pilih kolom Country juga pada tabel Customers lakukan GROUP berdasarkan Country dimana 
+jumlah dari CustomerID lebih dari 5.
+
+22.) SQL Comments
+Komentar digunakan untuk menjelaskan bagian pernyataan SQL, atau untuk mencegah eksekusi pernyataan SQL.
+Komentar satu baris dimulai dengan --.
+Teks apa pun antara -- dan akhir baris akan diabaikan (tidak akan dieksekusi).
+
+contoh komentar satu baris untuk mengabaikan akhir baris yaitu -- WHERE City='Berlin' :
+SELECT * FROM Customers -- WHERE City='Berlin';
+
+23.) SQL SELECT TOP
+SELECT TOP digunakan untuk menentukan jumlah rekaman yang akan dikembalikan.
+SELECT TOP berguna pada tabel besar dengan ribuan record. Mengembalikan rekaman dalam jumlah besar dapat memengaruhi kinerja.
+Catatan: Tidak semua sistem basis data mendukung SELECT TOP klausul ini, SELECT TOP biasanya digunakan pada SQL Server/MS Access. MySQL mendukung LIMIT klausa untuk memilih sejumlah catatan terbatas.
+
+contoh SQL berikut memilih tiga data pertama dari tabel "Customers" (menggunakan SELECT TOP) :
+SELECT TOP 3 * FROM Customers;
+
+contoh SQL berikut memilih dan membatasi hanya tiga data yang muncul dari tabel "Customers" (menggunakan LIMIT) :
+SELECT * FROM Customers LIMIT 3;
+
+contoh SQL berikut memilih dan membatasi hanya tiga data yang muncul dari tabel "Customers", dengan negara "Germany" :
+SELECT * FROM Customers WHERE Country='Germany' LIMIT 3;
+
+24.) SQL COUNT()
+Fungsi ini COUNT() mengembalikan jumlah baris yang cocok dengan kriteria tertentu.
+digunakan untuk menghitung jumlah baris atau catatan dalam tabel atau hasil kueri. Ini tidak peduli dengan nilai-nilai dalam kolom tertentu, 
+melainkan hanya menghitung jumlah baris yang sesuai dengan kondisi yang diberikan.
+
+sintaks :
+SELECT COUNT(column_name)
+FROM table_name
+WHERE condition;
+
+contoh Temukan jumlah total produk dalam Products tabel:
+SELECT COUNT(*)
+FROM Products;
+
+contoh Temukan jumlah produk yang Pricelebih tinggi dari 20 :
+SELECT COUNT(ProductID)
+FROM Products
+WHERE Price > 20;
+
+25.) SQL SUM()
+Fungsi ini SUM()mengembalikan jumlah total kolom numerik.
+digunakan untuk menghitung total nilai dari kolom yang berisi data numerik, seperti angka atau nilai numerik lainnya. 
+Misalnya, jika Anda memiliki kolom gaji dan ingin menghitung total gaji semua karyawan, Anda akan menggunakan SUM.
+Parameter di dalam SUM()fungsi juga bisa berupa ekspresi.
+
+sintaks :
+SELECT SUM(column_name)
+FROM table_name
+WHERE condition;
+
+contoh Mengembalikan jumlah semua kolom Quantity bidang dalam OrderDetails tabel :
+SELECT SUM(Quantity)
+FROM OrderDetails;
+
+contoh Kembalikan jumlah pesanan yang dibuat untuk produk dengan ProductID 11 :
+SELECT SUM(Quantity)
+FROM OrderDetails
+WHERE ProductId = 11;
+
+artinya pilih dan jumlahkan kolom Quantity pada tabel OederDetails dimana kolom ProductId sama dengan 11.
+
+contoh pilih dan jumlahkan kolom Quantity dan kalikan 10 lalu kita beri alias sebagai total pada tabel OrderDetails :
+SELECT SUM(Quantity * 10) AS total FROM OrderDetails;
+
+
+26.) SQL AVG()
+Fungsi ini AVG()mengembalikan nilai rata-rata kolom numerik.
+
+sintaks :
+SELECT AVG(column_name)
+FROM table_name
+WHERE condition;
+
+contoh pilih dan cari rata rata kolom Price pada tabel Products (Temukan harga rata-rata semua produk) :
+SELECT AVG(Price)
+FROM Products;
+
+contoh Kembalikan harga rata-rata produk dalam kategori 1 :
+SELECT AVG(Price) AS [average price]
+FROM Products
+WHERE CategoryID = 1;
+
+artinya pilih dan cari rata rata kolom Price dan beri alias sebagai average price pada tabel Products dimana kolom CategoryID sama dengan 1.
+
+27.) CROSS JOIN 
+CROSS JOIN: CROSS JOIN menghasilkan hasil gabungan dari dua tabel tanpa menggunakan kondisi khusus untuk menghubungkan baris-barisnya. Ini akan menggabungkan setiap baris dari satu tabel dengan setiap baris dari tabel lainnya, menghasilkan jumlah total baris yang merupakan hasil perkalian antara jumlah baris di kedua tabel tersebut.
+
+Contoh penggunaan CROSS JOIN:
+SELECT * FROM table1
+CROSS JOIN table2;
+
+Dalam contoh di atas, semua baris dari table1 akan digabungkan dengan semua baris dari table2, menghasilkan kombinasi semua kemungkinan pasangan baris.
+Jadi, dalam SQL, Anda dapat menggunakan CROSS JOIN untuk menghasilkan hasil gabungan lengkap dari dua tabel.
+
+28.) SQL ON
+klausa "ON" digunakan dalam perintah SQL JOIN untuk menghubungkan dua tabel berdasarkan kriteria tertentu. Dalam konteks JOIN, "ON" digunakan untuk menentukan kondisi yang harus dipenuhi agar baris dari kedua tabel dapat digabungkan.
+
+Contoh penggunaan "ON" dalam SQL adalah sebagai berikut:
+SELECT orders.order_id, customers.customer_name
+FROM orders
+INNER JOIN customers
+ON orders.customer_id = customers.customer_id;
+
+Dalam contoh di atas, kita menggabungkan tabel "orders" dan "customers" dengan menggunakan INNER JOIN. Kondisi yang harus dipenuhi adalah bahwa "customer_id" pada tabel "orders" harus sama dengan "customer_id" pada tabel "customers". Klausa "ON" digunakan untuk menyatakan kondisi ini.
+Jadi, inti dari penggunaan "ON" dalam SQL adalah untuk menentukan hubungan atau kondisi yang mengikat dua tabel saat Anda melakukan operasi JOIN.
+
+29.) created_at dan updated_at
+created_at dan updated_at adalah kolom-kolom yang umumnya digunakan dalam aplikasi web untuk melacak waktu pembuatan dan pembaruan setiap entitas dalam database. 
+Mereka memiliki fungsi berikut:
+created_at: Ini adalah timestamp yang menunjukkan kapan entitas (dalam hal ini, entitas mungkin adalah catatan mahasiswa) dibuat. Ketika Anda memasukkan data baru ke dalam tabel, nilai created_at akan diatur ke waktu saat itu.
+updated_at: Ini adalah timestamp yang menunjukkan kapan entitas terakhir kali diperbarui. Ketika Anda memperbarui catatan yang ada dalam tabel, nilai updated_at akan diatur ke waktu saat itu. Penggunaan ON UPDATE CURRENT_TIMESTAMP berarti nilai updated_at akan diperbarui secara otomatis ketika ada perubahan pada catatan tersebut.
+Dengan menggunakan created_at dan updated_at, Anda dapat dengan mudah melacak kapan entitas dibuat dan terakhir kali diperbarui, yang sering digunakan dalam audit dan pemantauan perubahan data.
+
+30.)SELECT DISTINCT
+Fungsi ini digunakan untuk mengambil nilai unik dari kolom tertentu. 
+"DISTINCT" adalah kata kunci yang digunakan dalam pernyataan SQL untuk mengambil nilai unik dari satu kolom atau lebih dalam tabel. Ini berguna ketika Anda ingin menghilangkan duplikat dari hasil kueri Anda dan hanya mendapatkan nilai-nilai yang berbeda dari suatu kolom.
+Misalnya, jika Anda memiliki tabel "pelanggan" yang berisi kolom "negara" dan Anda ingin mengetahui semua negara yang terdapat dalam tabel itu tanpa duplikat, Anda dapat menggunakan "DISTINCT" seperti ini:
+SELECT DISTINCT negara FROM pelanggan;
+
+Hasil dari kueri ini akan berisi daftar negara-negara yang berbeda dalam tabel "pelanggan" tanpa ada duplikat.
+
+31.) cara baca 
+customers.customerID adalah contoh penggunaan notasi dot (.) dalam SQL yang digunakan untuk mengakses kolom customerID dari tabel customers. Ini adalah cara umum untuk merujuk ke kolom dalam tabel dalam SQL.
+
+Misalnya, jika Anda memiliki tabel customers dan ingin mengambil nilai dari kolom customerID, Anda dapat menggunakan notasi dot ini dalam pernyataan SQL seperti ini:
+SELECT customers.customerID FROM customers;
+
+Ini akan mengambil semua nilai dari kolom customerID dalam tabel customers.
+
+32.) tutup database
+Tutupan koneksi ke database, seperti yang Anda lakukan dengan mysqli_close($con);, adalah praktik yang sangat penting dalam pengembangan aplikasi web yang berinteraksi dengan database. Ini adalah cara untuk memastikan bahwa sumber daya yang terkait dengan koneksi database dilepaskan dengan benar dan tidak terbuang sia-sia. 
+Ada beberapa alasan mengapa ini penting:
+a. Penghematan Sumber Daya: Koneksi database adalah sumber daya yang berharga, terutama jika ada banyak pengguna yang menggunakan aplikasi Anda. Dengan menutup koneksi yang tidak lagi diperlukan, Anda membebaskan sumber daya tersebut untuk pengguna lain.
+b. Pencegahan Kebocoran Memori: Terkadang, jika Anda tidak menutup koneksi database dengan benar, itu dapat mengakibatkan kebocoran memori di aplikasi Anda. Ini bisa menyebabkan kinerja buruk dan bahkan crash.
+c. Penghindaran Kesalahan: Menutup koneksi dengan benar adalah praktik yang baik untuk mencegah masalah dan kesalahan dalam aplikasi Anda. Hal ini juga membantu dalam pemecahan masalah jika terjadi masalah dengan koneksi database.
+d. Kode Yang Lebih Bersih: Ini juga menjadikan kode Anda lebih bersih dan lebih mudah dibaca. Ini adalah salah satu aspek penting dalam pengembangan perangkat lunak yang baik.
+
+Jadi, ya, sangat penting untuk menutup koneksi database Anda setelah selesai menggunakannya untuk mencegah masalah potensial.  
+
+33.) LIMIT dan OFFSET
+limit mengontrol jumlah data yang akan ditampilkan, dan offset menentukan dari baris ke berapa data akan dimulai. 
+
+
+34.) DESCRIBE
+DESCRIBE atau DESC adalah perintah yang digunakan untuk mendapatkan informasi tentang struktur kolom dalam sebuah tabel.
+Perintah ini memberikan detail tentang setiap kolom dalam tabel, seperti nama kolom, tipe data, apakah kolom dapat bernilai NULL, indeks, dan banyak lagi.
+Contoh penggunaan:
+DESCRIBE nama_tabel;
+
+
+35.) SHOW
+SHOW adalah perintah yang digunakan untuk menampilkan berbagai informasi tentang database, tabel, indeks, dan banyak lagi.
+Anda dapat menggunakannya untuk menampilkan daftar tabel dalam database, melihat status server, menampilkan indeks, dan lainnya.
+Contoh penggunaan:
+
+Menampilkan daftar tabel dalam database:
+SHOW TABLES;
+
+36.) CREATE TABLE ... AS SELECT
+Ini adalah cara yang umum digunakan untuk membuat tabel baru berdasarkan hasil seleksi dari tabel lain.
+
+contoh :
+$sql_select_into = "CREATE TABLE IF NOT EXISTS data_pekerja AS SELECT * FROM data_mahasiswa";
+if (mysqli_query($con, $sql_select_into)) {
+    echo "Tabel 'data_pekerja' berhasil dibuat dengan data dari 'data_mahasiswa'.<br>";
+} else {
+    echo "Gagal membuat atau mengisi tabel 'data_pekerja': " . mysqli_error($con) . "<br>";
+}
+
+
+Kode diatas membuat tabel baru 'data_pekerja' dengan data dari 'data_mahasiswa' menggunakan CREATE TABLE ... AS SELECT ...
+Jadi, kode di atas akan menciptakan tabel baru 'data_pekerja' dengan struktur dan data yang sama seperti 'data_mahasiswa'. 
+menggunakan CREATE TABLE IF NOT EXISTS untuk memastikan bahwa tabel 'data_pekerja' hanya dibuat jika belum ada.
+
+
+
+
+
+BASIS DATA SQL
+1.) CREATE DATABASE
+CREATE DATABASE digunakan untuk membuat database SQL baru.
+contoh :
+CREATE DATABASE databasename;
+
+
+2.) DROP DATABASE
+Pernyataan ini DROP DATABASE digunakan untuk menghapus database SQL yang ada. Untuk menghapus tabel sepenuhnya, gunakan DROP TABLE.
+contoh hapus tabel Customers :
+DROP TABLE Customers;
+
+3.) CREATE TABLE
+CREATE TABLE digunakan untuk membuat tabel baru dalam database.
+sintaks :
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   ....
+);
+
+Parameter kolom menentukan nama kolom tabel.
+Parameter tipe data menentukan tipe data yang dapat ditampung kolom (misalnya varchar, integer, tanggal, dll.).
+
+contoh :
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+
+4.) DROP TABLE
+DROP TABLE digunakan untuk menghapus tabel yang ada di database.
+
+sintaks:
+DROP TABLE table_name;
+
+contoh :
+DROP TABLE Shippers;
+
+5.) TRUNCATE TABLE
+TRUNCATE TABLE digunakan untuk menghapus data di dalam tabel, namun bukan tabel itu sendiri.
+
+sintaks :
+TRUNCATE TABLE table_name;
+
+contoh :
+TRUNCATE TABLE Shippers;
+
+
+6.) ALTER TABLE
+ALTER TABLE digunakan untuk menambah, menghapus, atau mengubah kolom dalam tabel yang sudah ada.
+Pernyataan tersebut ALTER TABLE juga digunakan untuk menambah dan menghilangkan berbagai batasan pada tabel yang sudah ada.
+
+sintaks :
+ALTER TABLE table_name
+ADD column_name datatype;
+
+contoh :
+ALTER TABLE Customers
+ADD Email varchar(255);
+
+SQL berikut menambahkan kolom "Email" ke tabel "Customers"
+
+7.) SQL Constraints
+SQL Constraints atau Batasan SQL digunakan untuk menentukan aturan untuk data dalam tabel.
+Batasan dapat ditentukan saat tabel dibuat dengan CREATE TABLE pernyataan, atau setelah tabel dibuat dengan ALTER TABLE pernyataan.
+
+sintaks :
+CREATE TABLE table_name (
+    column1 datatype constraint,
+    column2 datatype constraint,
+    column3 datatype constraint,
+    ....
+);
+
+
+Batasan SQL digunakan untuk menentukan aturan untuk data dalam tabel.
+Batasan digunakan untuk membatasi jenis data yang dapat dimasukkan ke dalam tabel. Hal ini memastikan keakuratan dan keandalan data dalam tabel. Jika ada pelanggaran antara batasan dan tindakan data, tindakan tersebut dibatalkan.
+Batasan dapat berupa tingkat kolom atau tingkat tabel. Batasan tingkat kolom berlaku untuk satu kolom, dan batasan tingkat tabel berlaku untuk seluruh tabel.
+macam macam Batasan berikut biasanya digunakan dalam SQL:
+
+a. NOT NULL- Memastikan bahwa kolom tidak boleh memiliki nilai NULL
+Secara default, kolom dapat menampung nilai NULL.
+Batasan ini NOT NULL memaksa kolom untuk TIDAK menerima nilai NULL.
+Hal ini memaksa bidang untuk selalu berisi nilai, yang berarti Anda tidak dapat menyisipkan catatan baru, atau memperbarui catatan tanpa menambahkan nilai ke bidang ini.
+
+contoh SQL NOT NULL pada CREATE TABLE :
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    Age int
+);
+
+artinya SQL berikut memastikan bahwa kolom "ID", "LastName", dan "FirstName" TIDAK akan menerima nilai NULL ketika tabel "Persons" dibuat.
+
+contoh SQL NOT NULL pada ALTER TABLE :
+ALTER TABLE Orang
+ADD Usia int NOT NULL;
+
+artinya Untuk membuat NOT NULL batasan pada kolom "Usia" ketika tabel "Orang" sudah dibuat
+
+
+b. UNIQUE- Memastikan semua nilai dalam kolom berbeda
+UNIQUEmemastikan bahwa semua nilai dalam kolom berbeda.
+Batasan UNIQUEdan PRIMARY KEY batasan memberikan jaminan keunikan kolom atau kumpulan kolom. Sebuah PRIMARY KEY batasan secara otomatis memiliki UNIQUE batasan.
+Namun, Anda dapat memiliki banyak UNIQUEbatasan per tabel, namun hanya satu PRIMARY KEY batasan per tabel.
+
+contoh SQL UNIQUE Constraint on CREATE TABLE :
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    UNIQUE (ID)
+);
+
+artinya SQL berikut membuat UNIQUEbatasan pada kolom "ID" ketika tabel "Orang" dibuat
+
+
+contoh SQL UNIQUE Constraint on ALTER TABLE :
+ALTER TABLE Persons
+ADD UNIQUE (ID);
+
+artinya Untuk membuat UNIQUE batasan pada kolom "ID" saat tabel sudah dibuat, gunakan SQL berikut.
+
+
+contoh Untuk memberi nama UNIQUE batasan atau UNIQUE constraint dan menentukan UNIQUE batasan pada beberapa kolom :
+ALTER TABLE Persons
+ADD CONSTRAINT UC_Person UNIQUE (ID,LastName);
+
+artinya untuk membuat UNIQUE batasan pada kolom ID dan LastName yang bernama UC_Person pada saat tabel Persons sudah dibuat.
+
+c. PRIMARY KEY- Kombinasi a NOT NULLdan UNIQUE. Secara unik mengidentifikasi setiap baris dalam sebuah tabel
+PRIMARY KEY secara unik mengidentifikasi setiap record dalam tabel.
+Kunci utama harus berisi nilai UNIK, dan tidak boleh berisi nilai NULL.
+Sebuah tabel hanya dapat memiliki SATU kunci utama atau satu primary key; dan di dalam tabel, kunci utama ini dapat terdiri dari satu atau beberapa kolom (bidang).
+
+contoh SQL PRIMARY KEY pada CREATE TABLE :
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (ID)
+);
+
+artinya SQL berikut membuat PRIMARY KEY kolom "ID" ketika tabel "Persons" dibuat.
+
+contoh Untuk mengizinkan penamaan PRIMARY KEY batasan, dan untuk menentukan PRIMARY KEY batasan pada beberapa kolom :
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+);
+
+artinya :  hanya ada SATU PRIMARY KEY(PK_Person). Namun, NILAI kunci utama terdiri dari DUA KOLOM (ID + LastName).
+
+contoh SQL PRIMARY KEY pada ALTER TABLE :
+ALTER TABLE Persons
+ADD PRIMARY KEY (ID);
+
+Untuk membuat PRIMARY KEY batasan pada kolom "ID" saat tabel sudah dibuat.
+Jika digunakan ALTER TABLE untuk menambahkan kunci utama atau primary key, kolom kunci utama harus dinyatakan tidak mengandung nilai NULL (saat tabel pertama kali dibuat).
+
+contoh Untuk mengizinkan penamaan PRIMARY KEYbatasan, dan untuk menentukan PRIMARY KEYbatasan pada beberapa kolom :
+ALTER TABLE Persons
+ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);
+
+artinya untuk membuat primary key batasan pada kolom ID dan LastName yang bernama PK_Person pada saat tabel Persons sudah dibuat.
+
+contoh DROP a PRIMARY KEY Constraint atau hapus primary key :
+ALTER TABLE Persons
+DROP PRIMARY KEY;
+
+artinya Untuk menghilangkan PRIMARY KEY batasan pada tabel Persons.
+
+d. FOREIGN KEY - Mencegah tindakan yang akan merusak hubungan antar tabel
+FOREIGN KEY digunakan untuk mencegah tindakan yang akan merusak hubungan antar tabel.
+A FOREIGN KEY adalah bidang (atau kumpulan bidang) dalam satu tabel, yang mengacu pada PRIMARY KEY tabel lain.
+Tabel dengan kunci asing atau FOREIGN KEY disebut tabel anak, dan tabel dengan kunci utama atau PRIMARY KEY disebut tabel referensi atau tabel induk.
+FOREIGN KEY mencegah data yang tidak valid dimasukkan ke dalam kolom kunci asing atau FOREIGN key column, karena harus merupakan salah satu nilai yang terdapat dalam tabel induk.
+
+contoh SQL FOREIGN KEY pada CREATE TABLE :
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+);
+
+artinya SQL berikut membuat FOREIGN KEY kolom "PersonID" ketika tabel "Orders" dibuat.
+
+contoh SQL FOREIGN KEY pada ALTER TABLE :
+ALTER TABLE Orders
+ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+
+artinya Untuk membuat FOREIGN KEY batasan pada kolom "PersonID" ketika tabel "Orders" sudah dibuat
+
+e. CHECK- Memastikan bahwa nilai dalam kolom memenuhi kondisi tertentu
+Batasan CHECKdigunakan untuk membatasi rentang nilai yang dapat ditempatkan dalam suatu kolom.
+Jika Anda menentukan CHECKbatasan pada kolom, maka hanya nilai tertentu yang diperbolehkan untuk kolom ini.
+Jika Anda menentukan CHECKbatasan pada tabel, batasan tersebut dapat membatasi nilai di kolom tertentu berdasarkan nilai di kolom lain dalam baris.
+
+contoh SQL CHECK pada CREATE TABLE :
+CREATE TABLE Orang (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Usia int,
+    CHECK (Age>=18)
+);
+
+artinya SQL berikut membuat CHECK batasan pada kolom "Usia" ketika tabel "Orang" dibuat. Batasan tersebut CHECK memastikan bahwa usia seseorang harus berusia 18 tahun ke atas.
+
+contoh SQL CHECK pada ALTER TABLE :
+ALTER TABLE Orang ADD CHECK (Usia>=18);
+
+artinya Untuk membuat CHECK batasan pada kolom "Usia" saat tabel sudah dibuat.
+
+
+f. DEFAULT- Menetapkan nilai default untuk kolom jika tidak ada nilai yang ditentukan
+Batasan DEFAULTdigunakan untuk menetapkan nilai default untuk kolom.
+Nilai default akan ditambahkan ke semua catatan baru, jika tidak ada nilai lain yang ditentukan.
+
+contoh SQL DEFAULT pada BUAT TABEL :
+CREATE TABLE Orang (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    Kota varchar(255) DEFAULT 'bekasi'
+);
+
+artinya SQL berikut menetapkan DEFAULT nilai untuk kolom "Kota" yaitu defaultnya bekasi ketika tabel "Orang" dibuat.
+
+contoh SQL DEFAULT pada ALTER TABLE :
+ALTER TABLE Orang 
+ALTER Kota SET DEFAULT 'bekasi';
+
+artinya Untuk membuat DEFAULT batasan pada kolom "Kota" yaitu defaultnya bekasi saat tabel sudah dibuat.
+
+
+contoh DROP a DEFAULT Constraint atau hapus default :
+ALTER TABLE Persons
+ALTER City DROP DEFAULT;
+
+artinya Untuk menghilangkan DEFAULT batasan pada kolom City ditabel Persons.
+
+e. CREATE INDEX- Digunakan untuk membuat dan mengambil data dari database dengan sangat cepat
+CREATE INDEX digunakan untuk membuat indeks dalam tabel.
+Indeks digunakan untuk mengambil data dari database lebih cepat dibandingkan sebaliknya. Pengguna tidak dapat melihat indeks, mereka hanya digunakan untuk mempercepat pencarian/query.
+Memperbarui tabel dengan indeks memerlukan waktu lebih lama dibandingkan memperbarui tabel tanpa indeks (karena indeks juga memerlukan pembaruan). Jadi, hanya buat indeks pada kolom yang sering dicari.
+
+sintaks :
+CREATE INDEX index_name
+ON table_name (column1, column2, ...);
+
+Membuat indeks pada tabel. Nilai duplikat diperbolehkan.
+Sintaks untuk membuat indeks berbeda-beda di setiap database. Oleh karena itu: Periksa sintaks untuk membuat indeks di database Anda.
+
+contoh : 
+CREATE INDEX idx_lastname
+ON Persons (LastName);
+
+artinya SQL ini  membuat indeks bernama "idx_lastname" pada kolom "LastName" di tabel "Persons".
+
+8.) SQL AUTO INCREMENT Field
+Auto-increment atau Kenaikan otomatis memungkinkan nomor unik dihasilkan secara otomatis ketika catatan baru dimasukkan ke dalam tabel.
+Seringkali ini adalah field kunci utama atau primary key yang ingin kita buat secara otomatis setiap kali record baru dimasukkan.
+
+contoh  : 
+CREATE TABLE Persons (
+    Personid int NOT NULL AUTO_INCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (Personid)
+);
+
+artinya Pernyataan SQL berikut mendefinisikan kolom "Personid" menjadi bidang kunci primer atau primary key kenaikan otomatis dalam tabel "Persons".
+MySQL menggunakan AUTO_INCREMENTkata kunci untuk melakukan fitur kenaikan otomatis.
+Secara default, nilai awal AUTO_INCREMENT adalah 1, dan akan bertambah 1 untuk setiap record baru.
+
+9.) SQL Dates
+Bagian tersulit ketika bekerja dengan tanggal adalah memastikan bahwa format tanggal yang Anda coba masukkan cocok dengan format kolom tanggal di database.
+Selama data Anda hanya berisi bagian tanggal, kueri Anda akan berfungsi seperti yang diharapkan. Namun, jika melibatkan porsi waktu, hal itu menjadi lebih rumit.
+
+Tipe Data Tanggal SQL
+MySQL hadir dengan tipe data berikut untuk menyimpan nilai tanggal atau tanggal/waktu dalam database:
+DATE- format YYYY-MM-DD
+DATETIME- Format : YYYY-MM-DD HH:MI:SS
+TIMESTAMP- Format : YYYY-MM-DD HH:MI:SS
+YEAR- format YYYY atau YY
