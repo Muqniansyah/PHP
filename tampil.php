@@ -1,4 +1,4 @@
- <!-- variasi tag pembuka dan tag penutup dari php -->
+<!-- variasi tag pembuka dan tag penutup dari php -->
 
 
 <!-- variasi 1 : standar tag (tag ini cocok disemua konfigurasi server) -->

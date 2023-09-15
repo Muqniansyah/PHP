@@ -1,0 +1,44 @@
+mysqli_connect_errno(): Ini adalah fungsi yang digunakan untuk mendapatkan nomor kesalahan terakhir yang terkait dengan upaya koneksi ke database menggunakan MySQLi (MySQL Improved Extension) dalam PHP. Ini berguna untuk memeriksa apakah koneksi database berhasil atau gagal. Jika koneksi gagal, Anda dapat menggunakan fungsi mysqli_connect_error() untuk mendapatkan pesan kesalahan yang lebih rinci.
+
+mysqli_fetch_assoc(): Ini adalah fungsi yang digunakan untuk mengambil satu baris hasil dari permintaan SELECT ke database sebagai array asosiatif. Dalam konteks yang umum, ini digunakan dalam pengambilan data dari tabel database. Hasil yang diambil adalah array yang berisi kolom-kolom dari baris data yang cocok, diindeks oleh nama kolomnya.
+
+
+
+
+# Koneksi database dengan PDO (PHP Data Objects) dan koneksi database dengan MySQLi (MySQL Improved) 
+adalah dua pendekatan yang berbeda untuk berinteraksi dengan database dalam PHP. 
+Berikut perbedaan utamanya:
+
+1. Driver Database:
+
+PDO: PDO adalah antarmuka abstrak yang dapat berfungsi dengan berbagai jenis database seperti MySQL, PostgreSQL, SQLite, SQL Server, dan lainnya. Ini berarti Anda dapat mengubah database yang digunakan tanpa perlu mengubah banyak kode.
+MySQLi: MySQLi adalah ekstensi yang dirancang khusus untuk bekerja dengan database MySQL.
+
+2. Sintaksis Query:
+
+PDO: Menggunakan prepared statement yang mendukung berbagai database. Ini memberikan keamanan yang lebih baik dan menghindari serangan SQL injection.
+MySQLi: Menggunakan fungsi yang lebih mirip dengan MySQL tradisional, meskipun MySQLi juga mendukung prepared statement.
+
+3. Kode Lebih Portabel:
+
+PDO: Lebih portabel karena Anda dapat dengan mudah mengubah database yang digunakan dalam kode tanpa mengubah banyak perintah SQL.
+MySQLi: Lebih terkait dengan MySQL, sehingga kode Anda mungkin perlu diubah jika Anda beralih ke database yang berbeda.
+
+4. Fitur Tambahan:
+
+PDO: Dapat digunakan untuk berbagai tugas seperti koneksi ke database, eksekusi query, dan manajemen transaksi.
+MySQLi: Dapat digunakan untuk berbagai tugas seperti eksekusi query, transaksi, serta mendukung fitur khusus MySQL seperti stored procedure.
+
+5. Keamanan:
+
+PDO: Lebih aman secara default karena menggunakan prepared statement dan mengikuti praktik keamanan modern.
+MySQLi: Juga aman jika Anda menggunakan prepared statement, namun Anda perlu menggunakannya secara benar.
+
+Sebagai rekomendasi umum, PDO sering kali dianggap lebih fleksibel dan dapat digunakan dalam berbagai proyek. 
+Namun, dalam kasus khusus jika Anda tahu bahwa Anda akan selalu menggunakan MySQL, MySQLi mungkin menjadi pilihan yang lebih efisien karena lebih terkait dengan MySQL dan menawarkan beberapa fitur spesifik MySQL yang tidak ada di PDO. 
+Yang terpenting, baik PDO maupun MySQLi dapat digunakan dengan aman jika digunakan dengan benar dalam konteks keamanan.
+
+
+
+
+
